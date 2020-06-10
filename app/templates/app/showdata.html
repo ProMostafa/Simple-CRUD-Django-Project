@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Show Data</title>
+	<style>
+		table{
+			background-color: black;
+			text-align: center;
+			width: 1000px;
+			color: white;
+			font-style: italic;
+			font-size: 15px;
+			border-width: 2px;
+			border-color: yellow;
+		}
+		a{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<h1>Person That Registrations</h1>
+	<table border="2px">
+		<tr>
+			<th>FullName</th>
+			<th>National_Id</th>
+			<th>Age</th>
+			<th>Gender</th>
+			<th>Social_Status</th>
+			<th>Address</th>
+			<th>Phone1</th>
+			<th>Phone2</th>
+			<th>Email</th>
+			<th>Update</th>
+			<th>Delete</th>
+		</tr>
+		{% for person in persons %}
+		 <tr>
+		 	<td>{{person.fullname}}</td>
+		 	<td>{{person.nationalid}}</td>
+		 	<td>{{person.age}}</td>
+		 	<td>{{person.gender}}</td>
+		 	<td>{{person.socialstatus}}</td>
+		 	<td>{{person.address}}</td>
+		 	<td>{{person.phone1}}</td>
+		 	<td>{{person.phone2}}</td>
+		 	<td>{{person.email}}</td>
+		 	<td><a href="{% url 'updating' person.id %}">Update</a></td>
+		 	<td><a href="{% url 'deleting' person.id %}">Delete</a></td>
+		 </tr>
+		 {%endfor%}
+	</table>
+	<a href="{% url 'homepage' %}">Add Person</a>
+</body>
+</html>

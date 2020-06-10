@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Updata Form</title>
+	<style>
+		label
+		{
+			margin: 10px;
+		}
+		input
+		{
+			margin: 10px;
+			display: inline-block;
+		}
+		.c1
+		{
+			margin-left: 50px;
+		}
+		.r1
+		{
+			margin-left: 45px;
+
+		}
+		.div1
+		{
+			border-style: solid;
+			border-width: 2px;
+			border-color: black;
+			width: 450px;
+			height: 500px;
+			margin-left: 200px;
+			margin-top: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="div1">
+		<h1>Updata Your Data</h1>
+	<form method="POST" action="{% url 'saving' %}">
+		{% csrf_token %}
+		<label>Full Name</label><input type="text" name="txtn" disabled="true" value="{{person.fullname}}"><br>
+		<label>National Id</label><input type="text" name="txtnid" disabled="true" value="{{person.nationalid}}"><br>
+		<label>Age</label><input type="number" name="age" class="c1" value="{{person.age}}"><br>
+		{% if person.gender == "Male" %}
+		<label>Gender</label><input type="radio" name="gender" value="Male" class="r1" checked="true">Male 
+		<input type="radio" name="gender" value="Famel" class="r1">Famel<br>
+		{% else %}
+		<label>Gender</label><input type="radio" name="gender" value="Male" class="r1" >Male 
+		<input type="radio" name="gender" value="Famel" class="r1" checked="true">Famel<br>
+		{% endif %}
+		{% if person.socialstatus == "Married" %}
+			<label>Social Status</label><input type="radio" name="status" value="Married" checked="true">Married
+			<input type="radio" name="status" value="Single" >Single<br>
+			{% else %}
+			<label>Social Status</label><input type="radio" name="status" value="Married" >Married
+			<input type="radio" name="status" value="Single"  checked="true" checked="true" >Single<br>
+			{% endif %}
+
+		<label>Address</label><input type="text" name="txtadd" value="{{person.address}}"><br>
+		<label>Phone</label><input type="text" name="phone1" required="true" value="{{person.phone1}}">
+		<input type="text" name="phone2" placeholder="Optional" value="{{person.phone2}}"><br>
+		<label>Email</label><input type="email" name="email" value="{{person.email}}"><br>
+		<input type="submit" name="Register" class="sub">
+	</form>
+	</div>
+</body>
+</html>

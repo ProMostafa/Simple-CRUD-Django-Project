@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration Form</title>
+	<style>
+		label
+		{
+			margin: 10px;
+		}
+		input
+		{
+			margin: 10px;
+			display: inline-block;
+		}
+		.c1
+		{
+			margin-left: 50px;
+		}
+		.r1
+		{
+			margin-left: 45px;
+
+		}
+		.div1
+		{
+			border-style: solid;
+			border-width: 2px;
+			border-color: black;
+			width: 450px;
+			height: 500px;
+			margin-left: 200px;
+			margin-top: 100px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="div1">
+		<h1>Register Your Data</h1>
+	<form method="POST" action="{% url 'saving' %}">
+		{% csrf_token %}
+		<label>Full Name</label><input type="text" name="txtn" autofocus="true" required="true"><br>
+		<label>National Id</label><input type="text" name="txtnid" required="true"><br>
+		<label>Age</label><input type="number" name="age" class="c1"><br>
+		<label>Gender</label><input type="radio" name="gender" value="Male" class="r1">Male 
+		<input type="radio" name="gender" value="Famel" class="r1">Famel<br>
+		<label>Social Status</label><input type="radio" name="status" value="Married">Married
+		<input type="radio" name="status" value="Single">Single<br>
+		<label>Address</label><input type="text" name="txtadd"><br>
+		<label>Phone</label><input type="text" name="phone1" required="true">
+		<input type="text" name="phone2" placeholder="Optional"><br>
+		<label>Email</label><input type="email" name="email"><br>
+		<input type="submit" name="Register" class="sub">
+	</form>
+	</div>
+</body>
+</html>
